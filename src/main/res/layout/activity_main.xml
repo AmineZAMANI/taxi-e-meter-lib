@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/taxi_color2"
+    tools:context=".MainActivity">
+
+
+    <TextView
+        android:id="@+id/title_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:text="b"
+        android:textColor="@color/taxi_color1"
+        android:textSize="100dp" />
+
+    <TextView
+        android:id="@+id/subtitle_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title_textview"
+        android:gravity="center"
+        android:paddingBottom="10dp"
+        android:text="e-meter"
+        android:textColor="@color/taxi_color1"
+        android:textSize="38sp" />
+
+
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/edittext1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/subtitle_textview"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:autoSizeMaxTextSize="22sp"
+        android:drawableLeft="@drawable/ic_place_grey600_24dp"
+        android:hint="@string/depart_hint"
+        android:textColor="@color/taxi_color1"
+        android:textColorHighlight="@color/taxi_color3"
+        android:textColorHint="@color/taxi_color1"
+        android:textSize="15sp" />
+
+
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/edittext2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edittext1"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:autoSizeMaxTextSize="22sp"
+        android:drawableLeft="@drawable/ic_place_grey600_24dp"
+        android:hint="@string/destination_hint"
+        android:textColor="@color/taxi_color1"
+        android:textColorHighlight="@color/taxi_color3"
+        android:textColorHint="@color/taxi_color1"
+        android:textSize="15sp" />
+
+
+    <TextView
+        android:id="@+id/result_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/taxi_color1"
+        android:gravity="center"
+        android:textColor="@color/taxi_color2"
+        android:textSize="60sp" />
+
+
+</RelativeLayout>

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Taxi e-meter</string>
+
+
+    <string name="depart_hint">Departure</string>
+    <string name="destination_hint">Destination</string>
+</resources>

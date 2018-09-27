@@ -58,28 +58,35 @@ public final class GeoFinder {
     }
 
     public void go() {
+        if( targets.size() > 2 ) {
+            throw new IllegalArgumentException("You must setup less than two targets.");
+        }
         for (int i = 0; i <= targets.size() - 1; i++) {
             final EditText targetEditText = targets.get(i);
-            targetEditText.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                }
-
-                @Override
-                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                }
-
-                @Override
-                public void afterTextChanged(Editable editable) {
-                    if (editable.toString().length() >= 3) {
-                        search(targetEditText.getText().toString(), targetEditText);
-                        parent = (ViewGroup) targetEditText.getParent();
-                    } else {
-                        resetScrollLayout();
-                    }
-                }
-            });
+            registerEditTextListener(targetEditText);
         }
+    }
+
+    private void registerEditTextListener(final EditText targetEditText) {
+        targetEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (editable.toString().length() >= 3) {
+                    search(targetEditText.getText().toString(), targetEditText);
+                    parent = (ViewGroup) targetEditText.getParent();
+                } else {
+                    resetScrollLayout();
+                }
+            }
+        });
     }
 
     private void search(final String query, final EditText targetEditText) {
@@ -153,22 +160,23 @@ public final class GeoFinder {
         textView.setLayoutParams(textViewLayoutParams);
         String shortText = extractShortText(place.getDisplayName());
         textView.setText(shortText);
-
         final LinearLayout roundRectViewParent = (LinearLayout) LayoutInflater.from(activity).inflate(R.layout.place_item, scrollLayout, false);
-        //roundRectViewParent.setBackgroundColor(activity.getResources().getColor(android.R.color.transparent));
         roundRectViewParent.addView(textView);
-
         scrollLayout.addView(roundRectViewParent, textViewLayoutParams);
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final Place place = (Place) targetEditText.getTag();
-                targetEditText.setText(extractShortText(place.getDisplayName()));
-                resetScrollLayout();
-                Utils.hideKeyboardFrom(activity, targetEditText);
-                updateRecipeTextView();
+                doSelection(targetEditText);
             }
         });
+    }
+
+    private void doSelection(EditText targetEditText) {
+        final Place place = (Place) targetEditText.getTag();
+        targetEditText.setText(extractShortText(place.getDisplayName()));
+        resetScrollLayout();
+        Utils.hideKeyboardFrom(activity, targetEditText);
+        updateRecipeTextView();
     }
 
     private String extractShortText(String displayName) {

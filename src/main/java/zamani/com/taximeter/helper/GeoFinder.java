@@ -200,7 +200,7 @@ public final class GeoFinder {
                 places.add(place);
             }
         } catch (Exception e) {
-            Log.d(GEO_FINDER_TAG, e.getMessage());
+            Log.e(GEO_FINDER_TAG, e.getMessage());
         }
         return places;
     }

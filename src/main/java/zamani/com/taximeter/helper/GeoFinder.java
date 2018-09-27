@@ -225,8 +225,8 @@ public final class GeoFinder {
         return distance;
     }
 
-    private String calculate(LatLng latlngA, LatLng latlngB) {
-        float distance = getDistance(latlngA, latlngB);
+    private String calculate(LatLng latLngA, LatLng latLngB) {
+        float distance = getDistance(latLngA, latLngB);
         double total = GeoFinder.this.departInitPrice + (distance * GeoFinder.this.pricePerKm);
         return String.format("%.2f", total) + " " + GeoFinder.this.currency;
     }

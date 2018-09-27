@@ -242,7 +242,7 @@ public final class GeoFinder {
                 total = calculate(new LatLng(depart.getLat(), depart.getLon()), new LatLng(destination.getLat(), destination.getLon()));
             }
         }
-        recipeTextView.setText(String.valueOf(total));
+        recipeTextView.setText(total);
     }
 
     public GeoFinder font(Typeface typefaceLcd) {
